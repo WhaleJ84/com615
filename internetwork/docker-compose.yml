@@ -1,0 +1,34 @@
+---
+version: '3.8'
+services:
+  pc1:
+    image: busybox
+    container_name: pc1
+    command: ping -c20 pc2
+    networks:
+      - headquarters
+      - branch1
+      - branch2
+
+  pc2:
+    image: alpine:3.14.2
+    container_name: pc2
+    command: ping -c20 pc3
+    networks:
+      - branch1
+
+  pc3:
+    image: alpine:3.14.2
+    container_name: pc3
+    command: ping -c20 pc1
+    networks:
+      - branch2
+
+networks:
+  headquarters:
+    driver: bridge
+  branch1:
+    driver: bridge
+  branch2:
+    driver: bridge
+...
