@@ -6,7 +6,9 @@ services:
   pc1:
     image: alpine:3.14.2
     container_name: pc1
-    command: ping -c20 pc2
+    command: ping_devices pc2 pc3
+    volumes:
+      - ./ping_devices.sh:/usr/bin/ping_devices
     networks:
       - headquarters
       - branch1
@@ -17,7 +19,9 @@ services:
   pc2:
     image: alpine:3.14.2
     container_name: pc2
-    command: ping -c20 pc3
+    command: ping_devices pc3 pc1
+    volumes:
+      - ./ping_devices.sh:/usr/bin/ping_devices
     networks:
       - branch1
 
@@ -26,7 +30,9 @@ services:
   pc3:
     image: alpine:3.14.2
     container_name: pc3
-    command: ping -c20 pc1
+    command: ping_devices pc2 pc1
+    volumes:
+      - ./ping_devices.sh:/usr/bin/ping_devices
     networks:
       - branch2
 
