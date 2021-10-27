@@ -2,7 +2,9 @@
 
 # https://docs.docker.com/engine/install/ubuntu/
 echo "Ensure older versions of Docker are removed"
-sudo apt remove -y docker docker-engine docker.io containerd runc
+sudo apt remove -y docker docker-engine docker.io containerd runc 2>/dev/null
+
+set -e
 
 echo "Ensure apt repository is up-to-date"
 sudo apt update
