@@ -45,5 +45,6 @@ if [ ! -f "/tmp/minikube-linux-amd64" ]; then
 fi
 sudo install /tmp/minikube-linux-amd64 /usr/local/bin/minikube
 
+# https://minikube.sigs.k8s.io/docs/drivers/none/
 echo "Ensure minikube service has been started"
-minikube start
+sudo -E minikube start --driver=none
