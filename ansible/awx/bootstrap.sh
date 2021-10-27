@@ -46,5 +46,8 @@ fi
 sudo install /tmp/minikube-linux-amd64 /usr/local/bin/minikube
 
 # https://minikube.sigs.k8s.io/docs/drivers/none/
+echo "Ensure pre-requisites are installed for minikube"
+sudo apt install -y conntrack
+
 echo "Ensure minikube service has been started"
 sudo -E minikube start --driver=none
