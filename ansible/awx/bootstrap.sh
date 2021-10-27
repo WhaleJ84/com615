@@ -46,4 +46,4 @@ fi
 sudo install /tmp/minikube-linux-amd64 /usr/local/bin/minikube
 
 echo "Ensure minikube service has been started"
-sudo -u "$SUDO_USER" minikube start
+minikube start
