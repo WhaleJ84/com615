@@ -34,5 +34,13 @@ sudo apt update
 echo "Ensure latest version of Docker is installed from apt repository"
 sudo apt install -y docker-ce docker-ce-cli containerd.io
 
-echo "Ensure current user is in the docker group"
-sudo usermod -aG docker "$USER"
+echo "Ensure user '$SUDO_USER' is in the docker group"
+sudo usermod -aG docker "$SUDO_USER"
+
+# https://minikube.sigs.k8s.io/docs/start/
+echo "Ensure minikube is installed"
+if [ ! -f "/tmp/minikube-linux-amd64" ]; then
+  cd /tmp/ || exit
+  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+fi
+sudo install /tmp/minikube-linux-amd64 /usr/local/bin/minikube
