@@ -27,7 +27,7 @@ echo "Ensure apt repository is up-to-date with Docker repository"
 sudo apt update
 
 echo "Ensure latest version of Docker is installed from apt repository"
-sudo apt install docker-ce docker-ce-cli containerd.io
+sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 echo "Ensure current user is in the docker group"
 sudo usermod -aG docker "$USER"
