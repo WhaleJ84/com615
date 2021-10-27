@@ -44,3 +44,6 @@ if [ ! -f "/tmp/minikube-linux-amd64" ]; then
   curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 fi
 sudo install /tmp/minikube-linux-amd64 /usr/local/bin/minikube
+
+echo "Ensure minikube service has been started"
+sudo minikube start
