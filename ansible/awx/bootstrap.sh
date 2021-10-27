@@ -17,7 +17,10 @@ sudo apt install -y \
   lsb-release
 
 echo "Ensure Docker's GPG key is added"
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+if [ ! -f "/usr/share/keyrings/docker-archive-keyring.gpg" ]; then
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+fi
 
 
 echo "Ensure Docker repository is added to apt"
